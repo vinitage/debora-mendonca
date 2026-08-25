@@ -1,12 +1,12 @@
 # Débora Mendonça
 
-Biosite institucional da **Débora Mendonça**, neuropsicóloga infantil e adulta em Araraquara/SP, CRP 06/184784, coordenadora do Instituto Ludo.
+Landing Page profissional da **Débora Mendonça**, neuropsicóloga infantil e adulta em Araraquara/SP, CRP 06/184784, coordenadora do Instituto Ludo.
 
 🔗 **Site:** [neuropsideboramendonca.com.br](https://neuropsideboramendonca.com.br)
 
 ## Sobre o projeto
 
-Página única (biosite) construída para conversão direta e autoridade clínica:
+Página única construída para conversão direta e autoridade clínica:
 
 - **Conversão** → CTA de WhatsApp distribuído ao longo da página, com mensagens distintas por seção (agendamento, dúvidas, orçamento)
 - **Autoridade local** → prova social (avaliações reais do Google), certificações, galeria de atendimento com lightbox, FAQ otimizado para AEO e seção "Como Funciona" com o passo a passo da avaliação
