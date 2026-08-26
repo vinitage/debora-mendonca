@@ -2,6 +2,17 @@
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Runs fn when the browser is idle (falls back to a short timeout on Safari,
+// which lacks requestIdleCallback) — used to keep heavy below-the-fold setup
+// off the main thread during initial load.
+function onIdle(fn) {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(fn, { timeout: 2000 });
+  } else {
+    setTimeout(fn, 200);
+  }
+}
+
 // Navbar: transparent → solid on scroll
 (function () {
   const navbar = document.getElementById('navbar');
@@ -71,7 +82,9 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 })();
 
 // Testimonials carousel — infinite seamless loop
-(function () {
+// Deferred to idle time: clones 10 slides + reads offsetWidth (forced reflow),
+// which showed up as a long main-thread task during initial load.
+onIdle(function () {
   var track = document.getElementById('carouselTrack');
   var dotsNav = document.getElementById('carouselDots');
   if (!track || !dotsNav) return;
@@ -226,7 +239,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   buildDots();
   setPos(0, false);
   startTimer();
-})();
+});
 
 // FAQ Accordion
 (function () {
