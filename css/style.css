@@ -2349,7 +2349,6 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(37,211,102,0.5);
-  animation: wa-pulse 2s ease-out 1.5s 1;
   transition: transform var(--ease);
 }
 
@@ -2362,10 +2361,21 @@ button {
   outline-offset: 3px;
 }
 
+/* Pulse ring on a pseudo-element (transform/opacity only) instead of animating
+   box-shadow on the button itself — keeps the effect off the main thread. */
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(37,211,102,0.5);
+  animation: wa-pulse 2s ease-out 1.5s 1;
+  pointer-events: none;
+}
+
 @keyframes wa-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-  70%  { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
-  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.7); opacity: 0; }
 }
 
 /* Desktop section padding */
@@ -2400,16 +2410,27 @@ button {
 }
 
 @keyframes cta-pulse {
-  0%   { box-shadow: 0 8px 24px rgba(107,63,160,0.4), 0 0 0 0 rgba(107,63,160,0.5); }
-  60%  { box-shadow: 0 8px 24px rgba(107,63,160,0.4), 0 0 0 12px rgba(107,63,160,0); }
-  100% { box-shadow: 0 8px 24px rgba(107,63,160,0.4), 0 0 0 0 rgba(107,63,160,0); }
+  0%   { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.12); opacity: 0; }
 }
 
 .hero-cta-pulse {
-  animation: cta-pulse 2.4s ease-out 1s 3;
+  position: relative;
 }
 
-.hero-cta-pulse:hover {
+/* Pulse ring on a pseudo-element (transform/opacity only) instead of animating
+   box-shadow on the button itself — keeps the effect off the main thread. */
+.hero-cta-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: rgba(107,63,160,0.5);
+  animation: cta-pulse 2.4s ease-out 1s 3;
+  pointer-events: none;
+}
+
+.hero-cta-pulse:hover::after {
   animation: none;
 }
 

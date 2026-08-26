@@ -32,11 +32,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
   </noscript>
 
-  <!-- Preload hero image -->
-  <link rel="preload" as="image" href="images/debora-jaleco-branco-1000w.webp" fetchpriority="high" type="image/webp">
+  <!-- Preload hero image (imagesrcset/imagesizes matches the <picture> below, so mobile preloads the small variant instead of always the 1000w) -->
+  <link rel="preload" as="image" href="images/debora-jaleco-branco-1000w.webp" imagesrcset="images/debora-jaleco-branco-520w.webp 520w, images/debora-jaleco-branco-800w.webp 800w, images/debora-jaleco-branco-1000w.webp 1000w" imagesizes="(max-width: 480px) 260px, (max-width: 1024px) 300px, 500px" fetchpriority="high" type="image/webp">
 
   <!-- IMPORTANTE: incrementar ?v=X toda vez que style.css for alterado, para forçar bypass do cache de 1 mês do htaccess -->
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
 
   <!-- Google tag (gtag.js) — carregamento adiado até a página estar pronta -->
   <script>
@@ -435,8 +435,8 @@
             src="images/debora-jaleco-branco-1000w.png"
             alt="Débora Mendonça, Neuropsicóloga em Araraquara — avaliação infantil e adulta"
             class="hero-photo"
-            width="460"
-            height="580"
+            width="500"
+            height="500"
             loading="eager"
             decoding="async"
             fetchpriority="high"
